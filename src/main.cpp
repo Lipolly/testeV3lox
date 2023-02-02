@@ -6,9 +6,7 @@ FuncsAux funcs = FuncsAux();
 void setup() {
     Wire.begin();
     Serial.begin(9600);
-    if(funcs.init()) {
-        digitalWrite(LED_BUILTIN, HIGH);
-    }
+    digitalWrite(LED_BUILTIN,funcs.init());
     
 }
 

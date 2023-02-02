@@ -2,7 +2,6 @@
 #include "../include/defines.h"
 
 VL53L0X sensor;
-unsigned char sensor_addr = 0x30;
 
 FuncsAux::FuncsAux() {}
 
@@ -24,15 +23,7 @@ uint16 FuncsAux::ler() {
         Serial.println("TIMEOUT"); 
         if (!sensor.init()) {
             Serial.println("Parou");
-            resetWire();
         }
     }
     return data;
-}
-
-void FuncsAux::resetWire() {
-    Wire.end();
-    delay(100);
-    Wire.begin();
-    Serial.println(init() ? "Ok" : "Nn ok");
 }

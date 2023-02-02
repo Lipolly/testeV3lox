@@ -5,7 +5,7 @@
 
 class FuncsAux {
     private:
-        void resetWire();
+
     public:
         FuncsAux();
         bool init();
