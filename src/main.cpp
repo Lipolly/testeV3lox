@@ -9,6 +9,8 @@ void setup() {
 }
 
 void loop() {
-    uint16 dist;
-    funcs.ler()
+    uint16 dist = funcs.ler();
+    Serial.print("Leitura: ");
+    Serial.println(dist);
+    delay(100);
 }

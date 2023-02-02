@@ -1,6 +1,8 @@
 #ifndef FUNCSAUX_H
 #define FUNCSAUX_H
 
+#include "./defines.h"
+
 class FuncsAux {
     private:
 
@@ -8,5 +10,6 @@ class FuncsAux {
     FuncsAux();
     void write_pfc_estate(unsigned char state);
     void init();
+    uint16 ler();
 };
 #endif

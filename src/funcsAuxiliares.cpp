@@ -1,5 +1,5 @@
-#include "../lib/funcsAuxiliares.h"
-#include "../lib/defines.h"
+#include "../include/funcsAuxiliares.h"
+#include "../include/defines.h"
 
 VL53L0X sensor;
 unsigned char sensor_addr = 0x30;
@@ -23,8 +23,6 @@ void FuncsAux::init() {
     sensor.startContinuous();
 }
 
-void FuncsAux::ler(uint16 dist) {
-    // Serial.print("Lendo o sensor: ");
-    // Serial.println(i);
-    dist = sensor.readRangeContinuousMillimeters();
+uint16 FuncsAux::ler() {
+    return sensor.readRangeContinuousMillimeters();
 }
