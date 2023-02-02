@@ -4,8 +4,12 @@
 FuncsAux funcs = FuncsAux();
 
 void setup() {
+    Wire.begin();
     Serial.begin(9600);
-    funcs.init();
+    if(funcs.init()) {
+        digitalWrite(LED_BUILTIN, HIGH);
+    }
+    
 }
 
 void loop() {

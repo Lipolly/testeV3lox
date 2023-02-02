@@ -5,11 +5,10 @@
 
 class FuncsAux {
     private:
-
+        void resetWire();
     public:
-    FuncsAux();
-    void write_pfc_estate(unsigned char state);
-    void init();
-    uint16 ler();
+        FuncsAux();
+        bool init();
+        uint16 ler();
 };
 #endif

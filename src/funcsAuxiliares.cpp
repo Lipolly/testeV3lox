@@ -6,23 +6,33 @@ unsigned char sensor_addr = 0x30;
 
 FuncsAux::FuncsAux() {}
 
-void FuncsAux::write_pfc_estate(unsigned char state) {
-    Wire.beginTransmission(0x20);
-    Wire.write(state);
-    Wire.endTransmission();
-}
 
-void FuncsAux::init() {
-    sensor.setAddress(sensor_addr);
+bool FuncsAux::init() {
+
+    sensor.setTimeout(500);
+    sensor.setMeasurementTimingBudget(200000);
     if (!sensor.init()) {
-        Serial.print("Não deu certo");
+        Serial.println("Não deu certo");
+        return false;
     }
-    sensor.setTimeout(0);
-    sensor.setSignalRateLimit(0.25);
-
-    sensor.startContinuous();
+    return true;
 }
 
 uint16 FuncsAux::ler() {
-    return sensor.readRangeContinuousMillimeters();
+    uint16 data = sensor.readRangeSingleMillimeters();
+    if (sensor.timeoutOccurred()) { 
+        Serial.println("TIMEOUT"); 
+        if (!sensor.init()) {
+            Serial.println("Parou");
+            resetWire();
+        }
+    }
+    return data;
+}
+
+void FuncsAux::resetWire() {
+    Wire.end();
+    delay(100);
+    Wire.begin();
+    Serial.println(init() ? "Ok" : "Nn ok");
 }
