@@ -3,7 +3,6 @@
 #include "../include/defines.h"
 
 VL53L0X sensor[2];
-int xshutPins[2] = {XSHUT1, XSHUT2};
 
 FuncsAux::FuncsAux() {}
 
