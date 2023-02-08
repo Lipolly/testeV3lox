@@ -11,8 +11,11 @@ void setup() {
 }
 
 void loop() {
-    uint16 dist = funcs.ler();
-    Serial.print("Leitura: ");
-    Serial.println(dist);
+    uint16 dist[2] = {0,0};
+    funcs.ler(dist);
+    Serial.print("Leituras: ");
+    Serial.print(dist[0]);
+    Serial.print("  ");
+    Serial.println(dist[1]);
     delay(100);
 }

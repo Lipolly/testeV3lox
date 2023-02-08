@@ -9,6 +9,6 @@ class FuncsAux {
     public:
         FuncsAux();
         bool init();
-        uint16 ler();
+        void ler(uint16 data[]);
 };
 #endif
