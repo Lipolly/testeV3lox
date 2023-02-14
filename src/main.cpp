@@ -11,8 +11,12 @@ void setup() {
 }
 
 void loop() {
-    uint16 dist = funcs.ler();
-    Serial.print("Leitura: ");
-    Serial.println(dist);
+    uint16 dist[8] = {0,0,0,0,0,0,0,0};
+    funcs.ler(dist);
+    Serial.print("Leituras: ");
+    for(int sensor = 0; sensor <= 7; sensor++){
+        Serial.print(dist[sensor]);
+        Serial.print("  ");
+    }
     delay(100);
 }
