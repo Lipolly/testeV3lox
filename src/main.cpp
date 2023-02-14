@@ -14,7 +14,7 @@ void loop() {
     uint16 dist[8] = {0,0,0,0,0,0,0,0};
     funcs.ler(dist);
     Serial.print("Leituras: ");
-    for(int sensor = 0; sensor <= 7; sensor++){
+    for(int sensor = 0; sensor < 8; sensor++){
         Serial.print(dist[sensor]);
         Serial.print("  ");
     }

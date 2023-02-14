@@ -10,7 +10,7 @@ int sensorNum[8] = {0, 1, 2, 3, 4, 5, 6, 7};
 FuncsAux::FuncsAux() {}
 
 bool FuncsAux::init() {
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
         digitalWrite(sensorPins[i], (i == sensorNum[i]));
         delay(10);
         sensor[i].setTimeout(500);
@@ -24,7 +24,8 @@ bool FuncsAux::init() {
 }
 
 void FuncsAux::ler(uint16 data[]) {
-    for(int i = 0; i < 1; i++) {
+    for(int i = 0; i < 8; i++) {
+    digitalWrite(sensorPins[i], (i == sensorNum[i]));
     data[i] = sensor[i].readRangeSingleMillimeters();
         if (sensor[i].timeoutOccurred()) {
             Serial.println("TIMEOUT");
@@ -33,4 +34,3 @@ void FuncsAux::ler(uint16 data[]) {
             }
         }
     }
-}
